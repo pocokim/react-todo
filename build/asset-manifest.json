@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.js": "/codesquad/static/js/main.1fe4d2fc.chunk.js",
+    "main.js.map": "/codesquad/static/js/main.1fe4d2fc.chunk.js.map",
+    "runtime~main.js": "/codesquad/static/js/runtime~main.b8393197.js",
+    "runtime~main.js.map": "/codesquad/static/js/runtime~main.b8393197.js.map",
+    "static/js/2.f68b8b4f.chunk.js": "/codesquad/static/js/2.f68b8b4f.chunk.js",
+    "static/js/2.f68b8b4f.chunk.js.map": "/codesquad/static/js/2.f68b8b4f.chunk.js.map",
+    "index.html": "/codesquad/index.html",
+    "precache-manifest.6a0bc0053e898b5b911a3c8ac16b2e7b.js": "/codesquad/precache-manifest.6a0bc0053e898b5b911a3c8ac16b2e7b.js",
+    "service-worker.js": "/codesquad/service-worker.js"
+  }
+}
