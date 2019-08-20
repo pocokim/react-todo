@@ -1,12 +1,14 @@
 import React, { Component } from "react";
 import TodoTable from "./TodoTable";
+import { hot } from "react-hot-loader/root";
 
-export default class App extends Component {
-  render() {
-    return (
-      <div>
-        <TodoTable />
-      </div>
-    );
-  }
-}
+const App = props => {
+  return (
+    <div>
+      <TodoTable />
+    </div>
+  );
+};
+
+// export 할 때 hot 함수를 실행시켜 내보낸다
+export default hot(App);
