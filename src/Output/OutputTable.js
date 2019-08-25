@@ -3,10 +3,9 @@ import OutputRow from "./OutputRow";
 import styled, { css } from "styled-components";
 import { useStateValue } from "../state";
 
-const Background = styled.div`
-  background: #a6d0d1;
-`;
+const Background = styled.div``;
 const Table = styled.div`
+  background: #dfdfdf;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -21,7 +20,7 @@ const Ul = styled.ul`
 `;
 
 export default function OutputTable(props) {
-  const [{ todos },] = useStateValue();
+  const [{ todos }] = useStateValue();
   const [isOpened, setIsOpened] = useState(true);
 
   const handleClick = () => {
@@ -36,8 +35,8 @@ export default function OutputTable(props) {
   return (
     <Background>
       <Table>
-        <h3>해야할 일들</h3>
-        <button onClick={handleClick}>접기</button>
+        <h3>Todos</h3>
+        <button onClick={handleClick}>toggle</button>
       </Table>
       <Ul isOpened={isOpened}>{todoList}</Ul>
     </Background>
