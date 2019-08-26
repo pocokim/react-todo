@@ -1,9 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import styled from "styled-components";
 import nextId from "react-id-generator";
-import { useStateValue } from "../state";
+import { useStateValue } from "../StateHelper/TodoState";
 
 const Form = styled.form`
+  background: #a6d0d1;
   height: 4em;
   display: flex;
   justify-content: center;
@@ -12,31 +13,30 @@ const Form = styled.form`
   margin-bottom: 2rem;
 `;
 
-export default function InputBar(props) {
+export default function InputBar() {
   const id = nextId();
-  const [{ todos,newTodo }, dispatch] = useStateValue();
-  
+  const { dispatch } = useStateValue();
+  const [newTodo, setNewTodo] = useState("");
 
   const handleChangeInput = ({ target: { value } }) => {
-    dispatch({
-      type: "changeInput",
-      newTodo: value
-    });
+    setNewTodo(value);
   };
 
   const handleAddtodo = e => {
     e.preventDefault();
     dispatch({
-      type: "add",
+      type: "ADD_TODO",
       title: newTodo,
       id
     });
+    setNewTodo("");
   };
+
   return (
     <Form>
-      <label>Enter todo : </label>
+      <label>할일 입력 : </label>
       <input value={newTodo} onChange={handleChangeInput} />
-      <button onClick={handleAddtodo}>submit</button>
+      <button onClick={handleAddtodo}>등록</button>
     </Form>
   );
 }

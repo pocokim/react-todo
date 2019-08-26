@@ -1,27 +1,39 @@
-import React from "react";
-import RadiusDisplayer from "../components/RadiusDisplayer";
+import React, { useState, useEffect } from "react";
+import { useStateValue } from "../StateHelper/TodoState";
+import RadiusDisplayer from "../components/Displayer";
 import styled from "styled-components";
-import { useStateValue } from "../state";
 
-const Div = styled.div`
+const ResultWrapper = styled.div`
   display: flex;
   justify-content: flex-end;
 `;
 
 export default function ResultBar() {
-  const [{ todos }, dispatch] = useStateValue();
-  const doneCount = todos.filter(todo => todo.status === "done").length;
-  const todoCount = todos.filter(todo => todo.status === "todo").length;
-  console.log(doneCount, todoCount);
+  // isLoading이 state.todos로 파악이 가능해서 필요없음.
+  const { state } = useStateValue();
+  const [todoCnt, setTodoCnt] = useState(0);
+  const [doneCnt, setDoneCnt] = useState(0);
+
+  useEffect(() => {
+    calcStatusCnt(state.todos);
+  }, [state.todos]);
+
+  const calcStatusCnt = todos => {
+    const todoArr = todos.filter(todo => todo.status === "todo");
+    const doneArr = todos.filter(todo => todo.status === "done");
+
+    setTodoCnt(todoArr.length);
+    setDoneCnt(doneArr.length);
+  };
 
   return (
-    <Div>
+    <ResultWrapper>
       <RadiusDisplayer
         color={"rgb(71, 58, 210)"}
         status={"todos"}
-        display={todoCount}
+        display={todoCnt}
       />
-      <RadiusDisplayer status={"done"} display={doneCount} />
-    </Div>
+      <RadiusDisplayer status={"done"} display={doneCnt} />
+    </ResultWrapper>
   );
 }

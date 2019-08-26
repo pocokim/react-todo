@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faTimes } from "@fortawesome/free-solid-svg-icons";
-import { useStateValue } from "../state";
+import { useStateValue } from "../StateHelper/TodoState";
 
-const Span = styled.span`
+const Title = styled.span`
   height: 2rem;
   line-height: 2rem;
   &:hover {
@@ -12,9 +12,9 @@ const Span = styled.span`
   }
   ${({ isClicked }) =>
     isClicked &&
-    css`
-      text-decoration: line-through;
-      color: #adb5bd;
+    ` 
+    text-decoration: line-through;
+    color: #adb5bd;
     `}
 `;
 
@@ -22,25 +22,26 @@ const StyledFontAwesomeIcon = styled(FontAwesomeIcon)`
   margin-left: 0.5rem;
 `;
 
-export default function OutputRow(props) {
-  const [{ todos }, dispatch] = useStateValue();
+export default function TodoItem(props) {
+  const { dispatch } = useStateValue();
+  const { title, id } = props.todo;
   const [isClicked, setIsClicked] = useState(false);
 
-  const { title, id } = todos.find((todo, idx) => idx === props.idx);
-
   const handleDeleteTodo = () => {
-    dispatch({ type: "delete", id });
+    dispatch({ type: "DELETE_TODO", id });
   };
 
   const handleClick = () => {
     setIsClicked(!isClicked);
-    dispatch({ type: "changeStatus", id });
+    dispatch({ type: "CHANGE_TODO_STATUS", id });
   };
 
   return (
     <>
-      <li >
-        <Span onClick={handleClick} isClicked={isClicked}>{title}</Span>
+      <li>
+        <Title onClick={handleClick} isClicked={isClicked}>
+          {title}
+        </Title>
         <StyledFontAwesomeIcon icon={faTimes} onClick={handleDeleteTodo} />
       </li>
     </>
