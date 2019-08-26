@@ -7,7 +7,7 @@ var environment = process.env.NODE_ENV === 'production' ? 'production' : 'develo
 
 var API_URL = {
   production: JSON.stringify('https://dxvinci.github.io/react-todo/todolist.json'),
-  development: JSON.stringify('https://dxvinci.github.io/react-todo/todolist.json')
+  development: JSON.stringify('https://killsanghyuck.github.io/prography_5th_front/todoDummy.json ')
 }
 
 
