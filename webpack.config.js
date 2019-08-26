@@ -6,7 +6,7 @@ const port = process.env.PORT || 3000;
 var environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 
 var API_URL = {
-  production: JSON.stringify('prod-url'),
+  production: JSON.stringify('https://dxvinci.github.io/react-todo/todolist.json'),
   development: JSON.stringify('https://dxvinci.github.io/react-todo/todolist.json')
 }
 
